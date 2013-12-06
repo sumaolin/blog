@@ -18,3 +18,7 @@
 		连接MongoDB  安装相关插件：MongoDB，和链接配置库的配置信息
 
 		安装插件：connect-mongo 链接数据库  mongodb存储cookie信息
+
+		注册和登陆  
+
+			页面设计
