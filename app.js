@@ -9,8 +9,8 @@ var routes = require('./routes');
 var http = require('http');
 var path = require('path');
 
-var MongoStore = require('connect-mongo')(express);
-var settings = require('./settings');
+var MongoStore = require('connect-mongo')(express); //mongodb链接
+var settings = require('./settings');               //mongodbmongodb链接
 
 var app = express();
 
@@ -25,8 +25,8 @@ app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 
-app.use(express.cookieParser());
-app.use(express.session({
+app.use(express.cookieParser());   //mongodb存储cookie信息
+app.use(express.session({          //mongodb存储cookie信息
 	secret: settings.cookieSecret,
 	key: settings.db,  //cookie name
 	cookie: {maxAge:1000 * 60 * 60 * 24 *30}, //30 days
