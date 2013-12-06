@@ -15,4 +15,6 @@
 
 		blog 的路由配置
 
-		连接MongoDB  安装相关插件，
+		连接MongoDB  安装相关插件：MongoDB，和链接配置库的配置信息
+
+		安装插件：connect-mongo 链接数据库
