@@ -15,7 +15,18 @@
 
 	<nav>
 		<span><a href="/" title="主页">HOME</a></span>
-		<span><a href="/login" title="登录">LOGIN</a></span>
-		<span><a href="/reg" title="注册">REGISTER</a></span>
+		<% if (user) { %>
+			<span><a href="/post" title="发表">POST</a></span>
+			<span><a href="/logout" title="登出">LOGOUT</a></span>
+		<% }else{ %>
+			<span><a href="/login" title="登录">LOGIN</a></span>
+			<span><a href="/reg" title="注册">REGISTER</a></span>
+		<% } %>
 	</nav>
 	<article>
+		<% if(success){ %>
+			<div><%= success %></div>
+		<% } %>
+		<% if(error){ %>
+			<div><%= error %></div>
+		<% } %>

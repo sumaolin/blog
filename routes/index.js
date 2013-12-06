@@ -5,16 +5,25 @@
 
 
 var crypto = require('crypto'), //用它生成散列值来加密密码
-	user = require('../models/user');
+	User = require('../models/user');
 
 module.exports = function(app){
 	app.get('/',function(req, res){
-
-		res.render('index', {title:"主页"});
+		res.render('index', {
+			title:"主页",
+			user: req.session.user,
+			success: req.flash('success').toString(),
+			error: req.flash('error').toString()
+		});
 	});
 
 	app.get('/reg', function(req, res){
-		res.render('reg', {title:'注册'});
+		res.render('reg', {
+			title:'注册',
+			user: req.session.user,
+			success: req.flash('success').toString(),
+			error: req.flash('error').toString()
+		});
 	});
 
 	app.post('/reg', function(req, res){
