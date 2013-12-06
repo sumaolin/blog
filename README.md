@@ -12,3 +12,7 @@
 	12,06
 
 		reserved 路由配置文件改到 /routes/index.js当中
+
+		blog 的路由配置
+
+		连接MongoDB  安装相关插件，
