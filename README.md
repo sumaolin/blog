@@ -11,18 +11,18 @@
 
 12,06
 
-1.reserved 路由配置文件改到 /routes/index.js当中
+>1.reserved 路由配置文件改到 /routes/index.js当中
 
-2.blog 的路由配置
+>2.blog 的路由配置
 
-3.连接MongoDB  安装相关插件：MongoDB，和链接配置库的配置信息
+>3.连接MongoDB  安装相关插件：MongoDB，和链接配置库的配置信息
 
-安装插件：connect-mongo 链接数据库  mongodb存储cookie信息
+ 安装插件：connect-mongo 链接数据库  mongodb存储cookie信息
 
-4.注册和登陆  
+>4.注册和登陆  
 
-页面设计
+ 页面设计
 
 页面通知
 
-[connect-flash 模块](https://github.com/jaredhanson/connect-flash) 实现session功能
+ [connect-flash 模块](https://github.com/jaredhanson/connect-flash) 实现session功能
