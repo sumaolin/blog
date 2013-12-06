@@ -2,7 +2,7 @@
 
 #学习Node.js使用，创建多人blog
 
-参考的学习资料：[https://github.com/nswbmw/N-blog/wiki/_pages](https://github.com/nswbmw/N-blog/wiki/_pages"")
+>参考的学习资料：[https://github.com/nswbmw/N-blog/wiki/_pages](https://github.com/nswbmw/N-blog/wiki/_pages"")
 
 ##学习进度：
 
@@ -26,3 +26,7 @@
 >>页面通知
 
 >>>[connect-flash 模块](https://github.com/jaredhanson/connect-flash) 实现session功能
+
+>>注册响应
+
+>>>构建user对象 实现save()和get()对数据库中的数据插入和查找操作
