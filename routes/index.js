@@ -10,11 +10,18 @@ var crypto = require('crypto'), //用它生成散列值来加密密码
 
 module.exports = function(app){
 	app.get('/',function(req, res){
-		res.render('index', {
-			title:"主页",
-			user: req.session.user,
-			success: req.flash('success').toString(),
-			error: req.flash('error').toString()
+		Post.get(null, function(err, posts){
+			if(err){
+				posts = [];
+			}
+
+			res.render('index', {
+				title: '主页',
+				user: req.session.user,
+				posts: posts,
+				success: req.flash('success').toString(),
+				error: req.flash('error').toString()
+			});
 		});
 	});
 
@@ -79,7 +86,7 @@ module.exports = function(app){
 		var md5 = crypto.createHash('md5'),
 			password = md5.update(req.body.password).digest('hex');
 
-		User.get(reg.body.name, function(err, user){
+		User.get(req.body.name, function(err, user){
 			if(!user){
 				req.flash('error', '用户不存在');
 				return res.redirect('login');
@@ -93,7 +100,7 @@ module.exports = function(app){
 
 	app.get('/post', checkLogin);
 	app.get('/post', function(req, res){
-		res.render('post', {
+		res.render('post',{
 			title: '发表',
 			user: req.session.user,
 			success: req.flash('success').toString(),

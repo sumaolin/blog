@@ -8,7 +8,7 @@ function Post(name, title, post){
 
 module.exports = Post;
 
-Post.prototype.save = function(Callback){
+Post.prototype.save = function(callback){
 	var date = new Date();
 
 	var time = {
@@ -37,6 +37,7 @@ Post.prototype.save = function(Callback){
 			}
 
 			collection.insert(post, {safe:true},function(err){
+				mongodb.close();
 				if(err){
 					return callback(err);
 				}

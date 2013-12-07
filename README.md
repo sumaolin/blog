@@ -70,7 +70,11 @@
 
 >>>		构建Post 数据模型
 
-		index中 处理/post请求
+		index.js中处理/post请求
+
+		index模板中显示post
+
+		ok!
 
 
 
