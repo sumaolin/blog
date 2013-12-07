@@ -60,11 +60,15 @@
 
 >折腾一个多小时的mongodb启动问题,回到主线上来：
 
->>+1.  登录与登出响应
+>>1.  登录与登出响应
 
->>+2. 页面权限控制
+>>2. 页面权限控制
 
-		此时没有post的模板文件，会报错：failed to lookup view "post"
+>>>		此时没有post的模板文件，会报错：failed to lookup view "post"
+
+>>3. 发表文章
+
+>>>		构建Post 数据模型
 
 
 
