@@ -12,6 +12,8 @@
 
 >> ###[12,07](/md/12.07.md)
 
+>>插件supervisor:自动帮我们重启应用 ，使用：supervisor app 启动命令
+
 
 
 
