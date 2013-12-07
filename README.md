@@ -57,3 +57,5 @@
 >>看来是我的昨天直接关机的问题了，修复命令：mongod -dbpath D:\dev\mongodb\blog -repair，就Ok了！
 
 >>看来以后不能直接关机走人了，正确的关数据库命令：mongod -shutdown，查看数据库当前状态的命令：关闭窗口，或者ctrl+c
+
+>折腾一个多小时的mongodb启动问题
