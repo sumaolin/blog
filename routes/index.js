@@ -17,6 +17,7 @@ module.exports = function(app){
 		});
 	});
 
+	app.get('/reg', checkNotLogin);
 	app.get('/reg', function(req, res){
 		res.render('reg', {
 			title:'注册',
@@ -26,6 +27,7 @@ module.exports = function(app){
 		});
 	});
 
+	app.post('/reg', checkNotLogin);
 	app.post('/reg', function(req, res){
 		var name = req.body.name,
 			password = req.body.password,
@@ -61,6 +63,7 @@ module.exports = function(app){
 		});
 	});
 
+	app.get('/login', checkNotLogin);
 	app.get('/login', function(req, res){
 		res.render('login', {
 			title:'登录',
@@ -70,6 +73,7 @@ module.exports = function(app){
 		});
 	})
 
+	app.post('/login', checkNotLogin);
 	app.post('/login', function(req, res){
 		var md5 = crypto.createHash('md5'),
 			password = md5.update(req.body.password).digest('hex');
@@ -86,19 +90,43 @@ module.exports = function(app){
 		});
 	});
 
+	app.get('/post', checkLogin);
 	app.get('/post', function(req, res){
-		res.render('post', {title:'发表'});
+		res.render('post', {
+			title: '发表',
+			user: req.session.user,
+			success: req.flash('success').toString(),
+			error: req.flash('error').toString()
+		});
 	});
 
+	app.post('/post', checkLogin);
 	app.post('/post', function(req, res){
-
+		
 	});
 
+	app.get('/logout', checkLogin);
 	app.get('/logout', function(req, res){
 		req.session.user = null;
 		req.flash('success','登出成功');
 		res.redirect('/');
 	});
+
+	function checkLogin(req, res, next){
+		if(!req.session.user){
+			req.flash('error', '登录');
+			res.redirect('/login');
+		}
+		next();
+	}
+
+	function checkNotLogin(req, res, next){
+		if(req.session.user){
+			req.flash('error', '已登录！');
+			res.redirect('back');
+		}
+		next();
+	}
 }
 // exports.index = function(req, res){
 //   res.render('index', { title: 'Express' });
