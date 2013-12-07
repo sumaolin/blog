@@ -37,6 +37,23 @@
 
 >>>显示提示信息
 
+
 ###12,07
 
 >[登录与登出响应](https://github.com/nswbmw/N-blog/wiki/%E7%AC%AC1%E7%AB%A0--Express-MongoDB-%E6%90%AD%E5%BB%BA%E5%A4%9A%E4%BA%BA%E5%8D%9A%E5%AE%A2#%E7%99%BB%E5%BD%95%E4%B8%8E%E7%99%BB%E5%87%BA%E5%93%8D%E5%BA%94)
+
+>####mongodb启动的问题：mongodb.bat文件启动不了了，直接闪退。
+
+>>cmd 直接命令行下:mongodb -dbpath D:\dev\mongodb\blog 还是退出了，不过看到错误信息了，主要注意到的提示：unclean shutdown detected。不明白啥意思，搜索的到的[参考资料](http://www.itpub.net/thread-1778273-1-1.html),摘录主要信息：
+	
+	服务器断电、异常关闭以及直接killall命令导致服务终止的情况都可能会被mondodb认为是unclean shutdown，
+	因为unclean shutdown可能会导致数据不一致性或者数据损坏，所以必须要手动修复后才能继续提供服务。
+
+	mongodb修复unclean shutdown的方式有：
+	>+1、从journal修复，journal就是类似于Oracle数据库中的redo log，工作机制也是类似的，都是write-ahead的。
+	>+2、从集群中其他节点的副本中修复。
+	>+3、如果服务不是运行在集群环境中，也没有启用journal，那必须在再次启动服务时使用--repair或者--repair加上--repairpath修复。
+
+>>看来是我的昨天直接关机的问题了，修复命令：mongod -dbpath D:\dev\mongodb\blog -repair，就Ok了！
+
+>>看来以后不能直接关机走人了，正确的关数据库命令：mongod -shutdown，查看数据库当前状态的命令：关闭窗口，或者ctrl+c
