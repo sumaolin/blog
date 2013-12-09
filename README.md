@@ -2,7 +2,7 @@
 
 #学习Node.js使用，创建多人blog
 
->参考的学习资料：[https://github.com/nswbmw/N-blog/wiki/_pages](https://github.com/nswbmw/N-blog/wiki/_pages"")
+>参考的学习资料：[https://github.com/nswbmw/N-blog/wiki/_pages](https://github.com/nswbmw/N-blog/wiki/_pages)
 
 ##学习进度：
 
@@ -14,9 +14,5 @@
 
 >>插件supervisor:自动帮我们重启应用 ，使用：supervisor app 启动命令
 
-
-
-
-
-
+>> ###[12,09](/md/12.09.md)
 
