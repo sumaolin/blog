@@ -5,6 +5,7 @@
 
 
 var crypto = require('crypto'), //用它生成散列值来加密密码
+	fs = require('fs'),
 	User = require('../models/user'),
 	Post = require('../models/post');
 
@@ -138,6 +139,32 @@ module.exports = function(app){
 			success: req.flash('success').toString(),
 			error: req.flash('error').toString()
 		});
+	});
+
+	app.post('/upload', checkLogin);
+	app.post('/upload', function(req, res){
+		// formidable.IncomingForm.UPLOAD_DIR = 'D:/dev/blog/public/images';
+		for(var i in req.files){
+			if(req.files[i].size == 0){
+				fs.unlinkSync(req.files[i].path); //remove empty file!
+				console.log('Successfully removed an empty file');
+			}else{
+				var target_path = 'D:/dev/blog/public/images/' + req.files[i].name;
+				console.log('Path:  ' + req.files[i].path);
+				console.log('Name:  ' + req.files[i].name);
+				console.log('target_path:  ' + target_path);
+
+				try{
+					fs.renameSync(target_path, req.files[i].path);
+				}catch(e){
+					console.log(e);
+				}
+				
+				console.log('Successfully renamed a file!');
+			}
+		}
+		req.flash('success', '文件上传成功');
+		res.redirect('/upload');
 	});
 
 	function checkLogin(req, res, next){
