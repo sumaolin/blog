@@ -16,6 +16,7 @@
 	<nav>
 		<span><a href="/" title="主页">HOME</a></span>
 		<% if (user) { %>
+			<span><a href="/upload" title="上传图片">UPLOAD</a></span>
 			<span><a href="/post" title="发表">POST</a></span>
 			<span><a href="/logout" title="登出">LOGOUT</a></span>
 		<% }else{ %>
