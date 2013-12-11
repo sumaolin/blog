@@ -86,7 +86,7 @@ Post.getOne = function(name, day, title, callback){
 		db.collection('posts', function(err, collection){
 			if(err){
 				mongodb.close();
-				return.callback(err);
+				return callback(err);
 			}
 			collection.findOne({
 				"name": name,
