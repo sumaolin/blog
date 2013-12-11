@@ -150,12 +150,12 @@ module.exports = function(app){
 				console.log('Successfully removed an empty file');
 			}else{
 				var target_path = 'D:/dev/blog/public/images/' + req.files[i].name;
-				console.log('Path:  ' + req.files[i].path);
-				console.log('Name:  ' + req.files[i].name);
-				console.log('target_path:  ' + target_path);
+				// console.log('Path:  ' + req.files[i].path);
+				// console.log('Name:  ' + req.files[i].name);
+				// console.log('target_path:  ' + target_path);
 
 				try{
-					fs.renameSync(target_path, req.files[i].path);
+					fs.renameSync(req.files[i].path, target_path);
 				}catch(e){
 					console.log(e);
 				}
