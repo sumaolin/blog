@@ -11,7 +11,7 @@ var crypto = require('crypto'), //用它生成散列值来加密密码
 
 module.exports = function(app){
 	app.get('/',function(req, res){
-		Post.get(null, function(err, posts){
+		Post.getAll(null, function(err, posts){
 			if(err){
 				posts = [];
 			}
