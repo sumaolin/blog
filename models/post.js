@@ -101,10 +101,11 @@ Post.getOne = function(name, day, title, callback){
 
 				// doc.post = markdown.toHTML(doc.post);
 				if(doc){
-					doc.post.markdown.toHtml(doc.post);
+					doc.post = markdown.toHTML(doc.post);
+					
 					doc.comments.forEach(function(comment){
-						comment.content = markdown.toHtml(comment.content);
-					})
+						comment.content = markdown.toHTML(comment.content);
+					});
 				}
 				callback(null,doc);
 			});

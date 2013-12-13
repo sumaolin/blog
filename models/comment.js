@@ -1,6 +1,6 @@
 var mongodb = require('./db');
 
-function Comment(name, day, title, Comment){
+function Comment(name, day, title, comment){
 	this.name = name;
 	this.day = day;
 	this.title = title;
@@ -20,7 +20,7 @@ Comment.prototype.save = function(callback){
 			return callback(err);
 		}
 
-		db.collection('post',function(err, collection){
+		db.collection('posts',function(err, collection){
 			if(err){
 				mongodb.close();
 				return callback(err);

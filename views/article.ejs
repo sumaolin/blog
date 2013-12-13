@@ -1,6 +1,5 @@
 <%- include header %>
 	
-
 <p>
 <% if( user && (user.name == post.name) ){ %>
 	<span><a href="/edit/<%= post.name %>/<%= post.time.day %>/<%= post.title %>" class='edit'>编辑</a></span>
