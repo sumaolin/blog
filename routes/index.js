@@ -7,7 +7,8 @@
 var crypto = require('crypto'), //用它生成散列值来加密密码
 	fs = require('fs'),
 	User = require('../models/user'),
-	Post = require('../models/post');
+	Post = require('../models/post'),
+	Comment = require('../models/comment.js');
 
 module.exports = function(app){
 	app.get('/',function(req, res){
