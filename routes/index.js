@@ -243,6 +243,19 @@ module.exports = function(app){
 		});
 	});
 
+	app.get('/remove/:name/:day/:title', checkLogin);
+	app.get('/remove/:name/:day/:title', function(req, res){
+		var currentUser = req.session.user;
+		Post.remove(currentUser.name, req.params.day, req.params.title, function(err){
+			if(err){
+				req.flash('error',err);
+			}
+			req.flash('success', '删除成功');
+			res.redirect('/');
+
+		})
+	});
+
 	function checkLogin(req, res, next){
 		if(!req.session.user){
 			req.flash('error', '登录');
