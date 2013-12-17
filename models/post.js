@@ -199,7 +199,7 @@ Post.getTen = function(name, page, callback){
 			return callback(err);
 		}
 
-		db.collection(function(err, collection){
+		db.collection('posts' ,function(err, collection){
 			if(err){
 				mongodb.close();
 				return callback(err);
@@ -212,8 +212,8 @@ Post.getTen = function(name, page, callback){
 
 			collection.count(query, function(err, total){
 				collection.find(query, {
-					skip: (page-1)*10,
-					limit: 10
+					skip: (page-1)*2,
+					limit: 2
 				}).sort({
 					time: -1
 				}).toArray(function(err, docs){
