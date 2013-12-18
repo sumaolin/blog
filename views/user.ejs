@@ -6,6 +6,13 @@
 	<p class="info">
 		作者：<a href="/u/<%= post.name %>"><%= post.name %></a>&nbsp; | &nbsp;
 		日期: <%= post.time.minute %>&nbsp; | &nbsp;
+		标签：
+		<% post.tags.forEach(function(tag, index){ %>
+			<% if(tag){ %>
+				<a class="tag" href='/tags/<%= tag %>'><%= tag %></a>
+			<% } %>
+		<% }) %>
+		&nbsp;|&nbsp;
 		<a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">查看</a>
 	</p>
 
