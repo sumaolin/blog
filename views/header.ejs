@@ -25,7 +25,13 @@
 			<span><a href="/login" title="登录">LOGIN</a></span>
 			<span><a href="/reg" title="注册">REGISTER</a></span>
 		<% } %>
+		<span>
+			<form method="get" action="/search">
+				<input type="text" name="keyword" placeholder="SEARCH" class="search" />
+			</form>
+		</span>
 	</nav>
+	
 	<article>
 		<% if(success){ %>
 			<div><%= success %></div>
