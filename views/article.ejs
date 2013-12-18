@@ -20,6 +20,6 @@
 <div class="aritcle">
 	<%- post.post %>
 </div>
-
+<p class="info">阅读：<%= post.pv %>&nbsp;|&nbsp;评论：<%= post.comments.length %></p>
 <%- include comment %>
 <%- include footer %>
