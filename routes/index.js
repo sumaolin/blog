@@ -413,6 +413,10 @@ module.exports = function(app){
 		});
 	});
 
+	app.use(function(req, res){//404页面
+		res.render('404');
+	});
+
 	function checkLogin(req, res, next){
 		if(!req.session.user){
 			req.flash('error', '登录');
