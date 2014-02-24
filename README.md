@@ -24,6 +24,22 @@
 
 >> ###[12,16](/md/12.16.md)
 
+#开源node 程序
+
+>> 1, [基于 Node.js 的社区系统](https://github.com/heroicyang/nodediscuss)
+
+
+#上传图片成功
+
+注意点：
+
+1，app.js 配置
+app.use(express.bodyParser({keepExtensions: true, uploadDir: './public/images/'}));
+中的uploadDir 设置的是临时目录
+
+index.js 中的var target_path = './public/images/1/' + req.files[i].name; 中设置的是
+文件复制到的目录，而且images必须有相应的目录结构（如果木有相应的目录，程序报错：Error: ENOENT, no such file）
+参考：[http://www.w3c.com.cn/nodejs%E6%95%99%E7%A8%8B-%E5%9F%BA%E4%BA%8Eexpressjs%E6%A1%86%E6%9E%B6%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0](http://www.w3c.com.cn/nodejs%E6%95%99%E7%A8%8B-%E5%9F%BA%E4%BA%8Eexpressjs%E6%A1%86%E6%9E%B6%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0)
 
 
 

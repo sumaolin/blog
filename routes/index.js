@@ -172,7 +172,7 @@ module.exports = function(app){
 				fs.unlinkSync(req.files[i].path); //remove empty file!
 				console.log('Successfully removed an empty file');
 			}else{
-				var target_path = 'D:/dev/blog/public/images/' + req.files[i].name;
+				var target_path = './public/images/' + req.files[i].name;
 				// console.log('Path:  ' + req.files[i].path);
 				// console.log('Name:  ' + req.files[i].name);
 				// console.log('target_path:  ' + target_path);
