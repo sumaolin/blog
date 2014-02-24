@@ -1,4 +1,5 @@
 var mongodb = require('./db');
+var crypto = require('crypto');
 
 function User(user){  //定义用户对象
 	this.name = user.name;
@@ -9,6 +10,10 @@ function User(user){  //定义用户对象
 module.exports = User;
 
 User.prototype.save = function(callback){ //存储用户信息到mongodb
+	var md5 = crypto.creatHash('md5'),
+	email_MD5 = md5.update(this.email.toLowerCase()).digest('hex'),
+	head = "http://www.gravatar.com/avatar/" + email_MD5 + "?s=48";
+
 	var user = {  //存储对象的实例
 		name: this.name,
 		password: this.password,
