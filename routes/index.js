@@ -8,7 +8,8 @@ var crypto = require('crypto'), //用它生成散列值来加密密码
 	fs = require('fs'),
 	User = require('../models/user'),
 	Post = require('../models/post'),
-	Comment = require('../models/comment.js');
+	Comment = require('../models/comment.js'),
+	carBrand = require('../models/carBrand.js');
 
 module.exports = function(app){
 	// app.get('/',function(req, res){
@@ -413,9 +414,53 @@ module.exports = function(app){
 		});
 	});
 
+	app.get('/addCarBrand', checkLogin);
+	app.get('/addCarBrand', function(req, res){
+		res.render('addCarBrand',{
+			title: '添加新的车型品牌',
+			user : req.session.user,
+			success: req.flash('success').toString(),
+			error: req.flash('error').toString()
+		});
+	});
+
+	app.post('/addCarBrand', checkLogin);
+	app.post('/addCarBrand', function(req,res){
+
+		var carBrandName = req.body.brand;
+		var models = [req.body.model1, req.body.model2, req.body.model3];
+		
+
+		var newCarBrand = new carBrand(carBrandName, models);
+		newCarBrand.save(function(err){
+			if(err){
+				req.flash('error',err);
+			}else{
+				req.flash('success', '添加新的车型品牌 成功');
+			}
+			res.redirect('back');
+		});
+
+		// res.render('carBrandsList', {
+		// 	title: '现有车型品牌以及相应车型',
+		// 	user: req.session.user,
+		// 	success: req.flash('success').toString(),
+		// 	error: req.flash('error').toString()
+		// })
+	});
+
+	app.get('/carBrandsList', checkLogin);
+	app.get('/carBrandsList', function(req,res){
+
+		var newCarBrand = new carBrand();
+
+	});
+
 	app.use(function(req, res){//404页面
 		res.render('404');
 	});
+
+	
 
 	function checkLogin(req, res, next){
 		if(!req.session.user){
